@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article
+from .models import *
 from django.contrib.auth.models import User
 
 class ArticleSerializer(serializers.ModelSerializer):
@@ -24,3 +24,8 @@ class UserSerializer(serializers.ModelSerializer):
             last_name=validated_data.get('last_name', '')
         )
         return user
+    
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ['user', 'github_link', 'description']
