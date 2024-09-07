@@ -5,8 +5,8 @@ import '../models/user_model.dart';
 class ApiService {
   final String baseUrl = 'http://192.168.1.39:8000/api/';
 
-  Future<User?> loginUser(String username, String password) async {
-    final url = Uri.parse(baseUrl + 'token/');
+  Future<Map<String, dynamic>?> loginUser(String username, String password) async {
+    final url = Uri.parse('${baseUrl}token/');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -17,7 +17,7 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
-      return User.fromJson(jsonDecode(response.body));
+      return jsonDecode(response.body); 
     } else {
       return null;
     }
