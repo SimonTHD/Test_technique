@@ -28,4 +28,5 @@ class UserSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['user', 'github_link', 'description']
+        fields = ['id', 'github_link', 'description']
+        read_only_fields = ['user']
